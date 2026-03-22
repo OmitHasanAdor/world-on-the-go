@@ -1,0 +1,18 @@
+.country{
+    border: 2px solid green;
+    border-radius: 15px;
+    padding: 10px;
+
+}
+p{
+    color: gray;
+    font-weight: 600;
+}
+
+.country-visited{
+    background: rgba(226, 255, 129, 0.884);
+    color: black;
+}
+.country-not-visited{
+background: rgba(180, 75, 173, 0.272);
+}

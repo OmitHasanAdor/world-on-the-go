@@ -1,0 +1,56 @@
+import React, { use, useState } from 'react';
+import Country from '../Country/Country';
+import './Countries.css'
+
+const Countries = ({ countriesPromise }) => {
+    const countriesData = use(countriesPromise)
+    const countries = countriesData.countries
+
+    // useState 
+    const [visitedCountries, setVisitedCountries] = useState([])
+    const [visitedFlag, setVisitedFlag] = useState([])
+    const handleVisitedFlag = (flag) => {
+        const newVisitedFlag = [...visitedFlag, flag];
+        setVisitedFlag(newVisitedFlag)
+    }
+
+    const handleVisitedCountries = (country) => {
+
+        // console.log("visited to :" , country.name.common)
+
+        const newVisitedCountry = [...visitedCountries, country];
+        // newVisitedCountry.push(country)
+        setVisitedCountries(newVisitedCountry);
+    }
+
+    // console.log(countries)
+    return (
+        <div>
+            <h3>Visited Country : {countries.length}</h3>
+            <h3>Total Visited : {visitedCountries.length} </h3>
+            <h3>Total Visited Flag: {visitedFlag.length}</h3>
+            <div>
+                {
+                    visitedFlag.map(flag=><img key={flag.cca3.cca3} src={flag.flags.flags.png}></img>)
+                }
+            </div>
+            <ul>
+                {
+                    visitedCountries.map(country => <ol key={country.cca3.cca3}>{country.name.common}</ol>)
+                }
+            </ul>
+            <div className='Countries'>
+                {
+                    countries.map((country) => <Country
+                        key={country.cca3.cca3}
+                        country={country}
+                        handleVisitedCountries={handleVisitedCountries}
+                        handleVisitedFlag={handleVisitedFlag}
+                    ></Country>)
+                }
+            </div>
+        </div>
+    );
+};
+
+export default Countries;
